@@ -21,6 +21,7 @@ void sortuj(int s[], int size) {
 }
 
 double liczMediane(int s[], int size) {
+
     if (size % 2 == 1) {
 
         return s[size / 2];
@@ -32,7 +33,7 @@ double liczMediane(int s[], int size) {
 
 int main() {
     const int SIZE = 10;
-    int number[SIZE] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int number[SIZE] = {7, 1, 9, 3, 4, 6, 5, 2, 8, 0};
 
     druk(number, SIZE);
 
@@ -47,6 +48,7 @@ int main() {
     printf("Najmniejsza wartosc to: %d\n\n", min);
 
     sortuj(number, SIZE);
+    printf("Posortowana ");
     druk(number, SIZE);
 
     double mediana = liczMediane(number, SIZE);
