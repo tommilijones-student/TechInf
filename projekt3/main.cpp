@@ -1,3 +1,4 @@
+// wersja 1
 #include <iostream>
 
 void tableFill (int table[], int length)
@@ -6,7 +7,7 @@ void tableFill (int table[], int length)
     while(i < length)
     {
         printf("Wpisz wartosc dla %d elementu:\n", i+1);
-        scanf("%d", &table[i]);
+        scanf("%d", table + i);
         i = i + 1;
     }
 
@@ -17,20 +18,20 @@ void printTable(int table[],int length)
     int i =0;
     while(i<length)
     {
-        printf("Wartosc dla %d elementu: %d\n",i+1,table[i]);
+        printf("Wartosc dla %d elementu: %d\n",i+1,*(table + i));
         i = i + 1;
     }
 
 }
 int findMin(int table[], int length)
 {
-    int min = table[0];
+    int min = *table;
     int i = 0;
     while(i < length)
     {
-        if(min > table[i])
+        if(min > *(table + i))
         {
-            min = table[i];
+            min = *(table + i);
         }
         i = i + 1;
     }
@@ -42,9 +43,9 @@ int findMax(int table[], int length)
     int i = 0;
     while(i < length)
     {
-        if(max < table[i])
+        if(max < *(table + i))
         {
-            max = table[i];
+            max = *(table + i);
         }
         i = i + 1;
     }
@@ -57,7 +58,7 @@ float findAvg(int table[], int length)
     int i = 0;
     while(i < length)
     {
-        sum = sum + table[i];
+        sum = sum + *(table + i);
         i = i + 1;
     }
     average = (float)sum/length;
@@ -72,7 +73,7 @@ float findMedian(int table[],int length)
 
     while(i < length)
     {
-        sortTable[i] = table[i];
+        sortTable[i] = *(table + i);
         i = i + 1;
     }
 
