@@ -1,5 +1,5 @@
-#ifndef OPERACJE_NA_TABLICY_H
-#define OPERACJE_NA_TABLICY_H
+#ifndef ARRAYOPERATION_H
+#define ARRAYOPERATION_H
 
 int porownaj(const void *a, const void *b);
 void pokazTablice(int tablica[], int rozmiar);
