@@ -13,7 +13,7 @@ void druk(int s[], int size) {
     }
 }
 
-<<<<<<< HEAD
+
 void sortuj(int s[], int size) {
     for (int i = 0; i < size - 1; i++) {
         for (int j = i + 1; j < size; j++) {
@@ -37,8 +37,7 @@ double liczMediane(int s[], int size) {
     }
 }
 
-=======
->>>>>>> 61ab4b169f55d822ccfa27834217ebb7254b3531
+
 int main() {
     const int SIZE = 10;
     int number[SIZE] = {7, 1, 9, 3, 4, 6, 5, 2, 8, 0};
@@ -59,12 +58,12 @@ int main() {
     printf("\nNajwieksza wartosc to: %d\n", maks);
     printf("Najmniejsza wartosc to: %d\n\n", min);
 
-<<<<<<< HEAD
+
     sortuj(number, SIZE);
     printf("Posortowana ");
-=======
+
     qsort(number, SIZE, sizeof(int), porownaj);
->>>>>>> 61ab4b169f55d822ccfa27834217ebb7254b3531
+
     druk(number, SIZE);
 
     printf("\nMediana = %d\n", number[SIZE / 2]);
