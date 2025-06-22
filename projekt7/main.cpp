@@ -1,31 +1,32 @@
+#include <iostream>
 #include <cstdio>
 
-void zmienWielkoscLiter(char *napis)
+void zamienLitery(char *tekst)
 {
-    while (*napis)
+    while (*tekst)
     {
-        if (*napis >= 'a' && *napis <= 'z')
+        if ('a' <= *tekst && *tekst <= 'z')
         {
-            *napis = *napis - 32;
+            *tekst = *tekst - ('a' - 'A'); // mała -> duża
         }
-        else if (*napis >= 'A' && *napis <= 'Z')
+        else if ('A' <= *tekst && *tekst <= 'Z')
         {
-            *napis = *napis + 32;
+            *tekst = *tekst + ('a' - 'A'); // duża -> mała
         }
-        napis++;
+        tekst++;
     }
 }
 
 int main()
 {
-    char bufor[256];
+    char tekst[256];
 
-    printf("Wprowadz zdanie: ");
-    fgets(bufor, sizeof(bufor), stdin);
+    printf("Podaj tekst: ");
+    fgets(tekst, sizeof(tekst), stdin);
 
-    zmienWielkoscLiter(bufor);
+    zamienLitery(tekst);
 
-    printf("Po konwersji: %s\n", bufor);
+    printf("Po zamianie liter: %s\n", tekst);
 
     return 0;
 }
