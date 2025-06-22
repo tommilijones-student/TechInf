@@ -1,71 +1,70 @@
-// wersja 3
 #include <iostream>
 
-void tableFill (int table[], int length)
+void tableFill (int *p, int length)
 {
     int i = 0;
     while(i < length)
     {
         printf("Wpisz wartosc dla %d elementu:\n", i+1);
-        scanf("%d", table + i);
+        scanf("%d", &*(p + i));
         i = i + 1;
     }
 
 }
 
-void printTable(int table[],int length)
+void printTable(int *p,int length)
 {
     int i =0;
     while(i<length)
     {
-        printf("Wartosc dla %d elementu: %d\n",i+1,*(table + i));
+        printf("Wartosc dla %d elementu: %d\n",i+1,*(p + i));
         i = i + 1;
     }
 
 }
-int findMin(int table[], int length)
+int findMin(int *p, int length)
 {
-    int min = *table;
+    int min = *p;
     int i = 0;
     while(i < length)
     {
-        if(min > *(table + i))
+        if(min > *(p + i))
         {
-            min = *(table + i);
+            min = *(p + i);
         }
         i = i + 1;
     }
     return min;
 }
-int findMax(int table[], int length)
+int findMax(int *p, int length)
 {
-    int max = *table;
+    int max = *p;
     int i = 0;
     while(i < length)
     {
-        if(max < *(table + i))
+        if(max < *(p + i))
         {
-            max = *(table + i);
+            max = *(p + i);
         }
         i = i + 1;
     }
     return max;
 }
-float findAvg(int table[], int length)
+float findAvg(int *p, int length)
 {
     int sum = 0;
     float average = 0;
     int i = 0;
     while(i < length)
     {
-        sum = sum + *(table + i);
+        sum = sum + *(p + i);
         i = i + 1;
     }
     average = (float)sum/length;
     return average;
 
 }
-float findMedian(int table[],int length)
+float findMedian(int *p,int length)
 {
     float median;
     int sortTable[length];
@@ -73,7 +72,7 @@ float findMedian(int table[],int length)
 
     while(i < length)
     {
-        sortTable[i] = *(table + i);
+        sortTable[i] = *(p+i);
         i = i + 1;
     }
 
@@ -112,19 +111,20 @@ float findMedian(int table[],int length)
 
 int main() {
     int numbers[] = {1,2,3,4,5,6,7,8,9,10};
+    int *ptr = numbers;
     int i = 0;
 
-    tableFill(numbers,10);
+    tableFill(ptr,10);
 
-    printTable(numbers, 10);
+    printTable(ptr, 10);
 
-    printf("Minimalna wartosc to: %d\n",findMin(numbers,10));
+    printf("Minimalna wartosc to: %d\n",findMin(ptr,10));
 
-    printf("Maksymalna wartosc to: %d\n",findMax(numbers,10));
+    printf("Maksymalna wartosc to: %d\n",findMax(ptr,10));
 
-    printf("Srednia wynosi: %f\n",findAvg(numbers,10));
+    printf("Srednia wynosi: %f\n",findAvg(ptr,10));
 
-    printf("Mediana wynosi: %f\n",findMedian(numbers, 10));
+    printf("Mediana wynosi: %f\n",findMedian(ptr, 10));
 
     return 0;
 }
