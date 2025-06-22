@@ -1,27 +1,31 @@
-#include <iostream>
+#include <cstdio>
 
-void naDuzeLitery(char *tekst)
+void zmienWielkoscLiter(char *napis)
 {
-    while (*tekst)
+    while (*napis)
     {
-        if (*tekst >= 'a' && *tekst <= 'z')
+        if (*napis >= 'a' && *napis <= 'z')
         {
-            *tekst = *tekst - 32;
+            *napis = *napis - 32;
         }
-        tekst++;
+        else if (*napis >= 'A' && *napis <= 'Z')
+        {
+            *napis = *napis + 32;
+        }
+        napis++;
     }
 }
 
 int main()
 {
-    char dane[256];
+    char bufor[256];
 
-    std::cout << "Wpisz tekst: ";
-    std::cin.getline(dane, 256);
+    printf("Wprowadz zdanie: ");
+    fgets(bufor, sizeof(bufor), stdin);
 
-    naDuzeLitery(dane);
+    zmienWielkoscLiter(bufor);
 
-    std::cout << "Zamieniony tekst: " << dane << std::endl;
+    printf("Po konwersji: %s\n", bufor);
 
     return 0;
 }
