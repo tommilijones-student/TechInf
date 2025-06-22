@@ -1,3 +1,5 @@
+// wersja 4
+
 #include <iostream>
 
 void tableFill (int *p, int length)
@@ -6,13 +8,13 @@ void tableFill (int *p, int length)
     while(i < length)
     {
         printf("Wpisz wartosc dla %d elementu:\n", i+1);
-        scanf("%d", &*(p + i));
+        scanf("%d", p + i);
         i = i + 1;
     }
 
 }
 
-void printTable(int *p,int length)
+void printTable(const int *p,int length)
 {
     int i =0;
     while(i<length)
@@ -72,7 +74,7 @@ float findMedian(int *p,int length)
 
     while(i < length)
     {
-        sortTable[i] = *(p+i);
+        sortTable[i] = p[i];
         i = i + 1;
     }
 
@@ -111,20 +113,21 @@ float findMedian(int *p,int length)
 
 int main() {
     int numbers[] = {1,2,3,4,5,6,7,8,9,10};
-    int *ptr = numbers;
+    const int *ptr_read = numbers;
+    int *ptr_write = numbers;
     int i = 0;
 
-    tableFill(ptr,10);
+    tableFill(ptr_write,10);
 
-    printTable(ptr, 10);
+    printTable(ptr_read, 10);
 
-    printf("Minimalna wartosc to: %d\n",findMin(ptr,10));
+    printf("Minimalna wartosc to: %d\n",findMin(ptr_write,10));
 
-    printf("Maksymalna wartosc to: %d\n",findMax(ptr,10));
+    printf("Maksymalna wartosc to: %d\n",findMax(ptr_write,10));
 
-    printf("Srednia wynosi: %f\n",findAvg(ptr,10));
+    printf("Srednia wynosi: %f\n",findAvg(ptr_write,10));
 
-    printf("Mediana wynosi: %f\n",findMedian(ptr, 10));
+    printf("Mediana wynosi: %f\n",findMedian(ptr_write, 10));
 
     return 0;
 }
