@@ -1,4 +1,4 @@
-// wersja 1
+// wersja 2
 #include <iostream>
 
 void tableFill (int table[], int length)
