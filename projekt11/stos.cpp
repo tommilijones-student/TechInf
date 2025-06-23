@@ -1,4 +1,4 @@
-#include "Kolejka.h"
+#include "stos.h"
 
 #define ROZMIAR 5
 
