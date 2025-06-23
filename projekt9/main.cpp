@@ -41,3 +41,6 @@ int main(int liczba_arg, const char* argumenty[]) {
 
     return 0;
 }
+
+// dziala poprawnie
+// dziala w powershelu
