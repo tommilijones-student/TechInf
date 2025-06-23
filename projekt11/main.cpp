@@ -1,72 +1,35 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "Kolejka.h"
+#include "Stos.h"
 
-void pokazOpcje() {
-    printf("\n");
-    printf("1 - dodaj liczbe\n");
-    printf("2 - podejrzyj pierwsza\n");
-    printf("3 - usun pierwsza\n");
-    printf("4 - czy pusta\n");
-    printf("5 - czy pelna\n");
-    printf("6 - wyjscie\n\n");
+#define ROZMIAR_STOSU 5
+
+static int dane[ROZMIAR_STOSU];
+static int indeks = -1;
+
+int czyPusty() {
+    return indeks == -1;
 }
 
-int main() {
-    int wartosc = 0;
-    int wybor = 0;
-    printf("Symulacja kolejki\n");
+int czyPelny() {
+    return indeks == ROZMIAR_STOSU - 1;
+}
 
-    while (1) {
-        pokazOpcje();
-        scanf("%d", &wybor);
-
-        switch (wybor) {
-            case 1:
-                if (!czyPelna()) {
-                    printf("Wprowadz liczbe: ");
-                    scanf("%d", &wartosc);
-                    dodaj(wartosc);
-                } else {
-                    printf("Brak miejsca!\n\n");
-                }
-                break;
-            case 2:
-                if (!czyPusta()) {
-                    wartosc = pierwsza();
-                    printf("Pierwsza liczba: %d\n", wartosc);
-                } else {
-                    printf("Brak elementow!\n\n");
-                }
-                break;
-            case 3:
-                if (!czyPusta()) {
-                    wartosc = usun();
-                    printf("Usunieto: %d\n", wartosc);
-                } else {
-                    printf("Brak elementow!\n\n");
-                }
-                break;
-            case 4:
-                if (czyPusta()) {
-                    printf("Pusta.\n");
-                } else {
-                    printf("Niepusta.\n");
-                }
-                break;
-            case 5:
-                if (czyPelna()) {
-                    printf("Pelna.\n");
-                } else {
-                    printf("Niepelna.\n");
-                }
-                break;
-            case 6:
-                return 0;
-            default:
-                printf("Zly wybor.\n\n");
-        }
+void wloz(int wartosc) {
+    if (!czyPelny()) {
+        indeks++;
+        dane[indeks] = wartosc;
     }
+}
 
-    return 0;
+int zdejmij() {
+    if (!czyPusty()) {
+        return dane[indeks--];
+    }
+    return -1;
+}
+
+int szczyt() {
+    if (!czyPusty()) {
+        return dane[indeks];
+    }
+    return -1;
 }
